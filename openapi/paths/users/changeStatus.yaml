@@ -1,0 +1,38 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+patch: 
+  tags:
+    - User
+  operationId: changeStatus
+  summary: Change Status
+  description: Retrieves status and change the status of the user with that.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            email:
+              type: string
+              format: email
+              example: john@gmail.com
+            status:
+              type: string
+              enum: ['active', 'locked']
+              example: active
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+                example: success
+    '403':
+      description: Forbidden
+    '404':
+      description: User email is invalid

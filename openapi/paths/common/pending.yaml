@@ -1,0 +1,41 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+post:
+  tags:
+    - Common
+  summary: Get pending count
+  description: |
+    Retrieve type and returns the pending count with the type.
+  operationId: getPendingCountByType
+  security: []
+  responses:
+    '200':  
+      description: Success
+      content:
+        application/json:
+          schema:
+            description: Matched count
+            type: integer
+            format: count
+
+            example:
+              count: 2
+    '403':
+      description: Forbidden
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            type:
+              type: string
+              description: Type of pending data
+              example: transaction
+      application/xml:
+        schema:
+          type: string
+          enum: ['transaction', 'maintenance', 'user']
+          example: transaction
+    description: Echo payload
+    required: true

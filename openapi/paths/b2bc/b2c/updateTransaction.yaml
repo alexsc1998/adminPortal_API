@@ -1,0 +1,62 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2C
+  operationId: updateTransactionStatusB2C
+  summary: Update transaction status
+  description: |
+    This is used for many reasons. When the user cancels the transaction, when the global limit and the user limit are smaller than the amount, when the signature verification is failed, when requests timeout and so on. The reason param is used to know the reason for calling updatetransaction. It helps when logging the errors.
+  security: []
+  parameters: 
+    - name: x-session-id
+      in: header
+      required: true
+      schema: 
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            dbtrAgt:
+              type: string
+            endToEndId:
+              type: string
+            gpsCoord:
+              type: string
+            merchantId:
+              type: string
+            page:
+              type: string
+            sessionID:
+              type: string
+            channel:
+              type: string
+            reason:
+              type: string
+            amount:
+              type: string
+            cdtrAgtBIC:
+              type: string
+            dbtrAcctId:
+              type: string
+            payerName:
+              type: string
+            dbtrAgtBIC:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              status:
+                type: string
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

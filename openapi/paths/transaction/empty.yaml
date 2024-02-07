@@ -1,0 +1,116 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get: 
+  tags:
+    - Transaction
+  operationId: getTransactions
+  summary: Get all transactions.
+  description: Returns the list of all transactions.
+  security: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              txnLogs: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id: 
+                      type: string
+                      example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
+                    createdAt: 
+                      type: string
+                      format: date-time
+                      example: '2023-09-07T18:13:41.386Z'
+                    cRIB:
+                      type: integer
+                      example: 60000
+                    cRMB:
+                      type: integer
+                      example: 50000
+                    cCIB:
+                      type: integer
+                      example: 100000
+                    cCMB:
+                      type: integer
+                      example: 100000
+                    nRIB:
+                      type: integer
+                      example: 60000
+                    nRMB:
+                      type: integer
+                      example: 50000
+                    nCIB:
+                      type: integer
+                      example: 1000
+                    nCMB:
+                      type: integer
+                      example: 1000
+                    status:
+                      type: integer
+                      example: 1
+                    tid:
+                      type: integer
+                      example: 1
+    '403':
+      description: Forbidden
+    
+post: 
+  tags:
+    - Transaction
+  operationId: createTransaction
+  summary: Create transaction.
+  description: Make a request to create a new transaction.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            cRIB:
+              type: integer
+              example: 50000
+            cRMB:
+              type: integer
+              example: 50000
+            cCIB:
+              type: integer
+              example: 100000
+            cCMB:
+              type: integer
+              example: 100000
+            nRIB:
+              type: integer
+              example: 60000
+            nRMB:
+              type: integer
+              example: 50000
+            nCIB:
+              type: integer
+              example: 1000
+            nCMB:
+              type: integer
+              example: 1000
+            maker:
+              type: string
+              format: email
+              example: john@gmail.com
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+                example: success
+    '403':
+      description: Forbidden

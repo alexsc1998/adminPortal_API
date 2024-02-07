@@ -1,0 +1,57 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2B
+  operationId: logoutB2B
+  summary: Logout
+  description: |
+    Just like the name, it logs the user out.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            accessToken:
+              type: string
+            channel:
+              type: string
+            txnAmount:
+              type: integer
+            dbtrAgt:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              header:
+                type: object
+                properties:
+                  trxType:
+                    type: string
+                  timestamp:
+                    type: string
+                  tracingNo:
+                    type: string
+                  channel:
+                    type: string
+                  accessToken:
+                    type: string
+                  signature:
+                    type: string
+                  status:
+                    type: integer
+                  errorId:
+                    type: string
+                  errorDesc:
+                    type: string
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

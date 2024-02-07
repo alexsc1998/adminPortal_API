@@ -1,0 +1,42 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get: 
+  tags:
+    - User
+  operationId: checkToken
+  summary: Check Token
+  description: Retrieves token data and checks the account is activated or not.
+  security: []
+  parameters:
+    - name: token
+      in: query
+      description: The token that needs to be fetched
+      required: true
+      schema:
+        type: string
+        example: '*******************'
+    - name: src
+      in: query
+      description: The src that doesn't need to be fetched
+      required: false
+      schema: 
+        type: string
+        enum: ['active', 'locked']
+        example: 'active'
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              user:
+                type: string
+                example: johndoe
+    '400':
+      description: Token has expired
+    '403':
+      description: Forbidden
+    '404':
+      description: Token not found

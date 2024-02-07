@@ -1,0 +1,69 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2C
+  operationId: notifyTransactionB2C
+  summary: Notify transaction
+  description: |
+    After a call for debit is made, notifytransaction will be called. Notifytransaction could return an error or timeout hence the retryRequest function. The function recursively calls notifytransaction 3 times in range of the specified time frame. If the response from notifytransaction is not an error, it will it the base case for the function and returns.
+  security: []
+  parameters: 
+    - name: x-session-id
+      in: header
+      required: true
+      schema: 
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            transactionNo:
+              type: string
+            referenceNo:
+              type: string
+            trxTimestamp:
+              type: string
+            fromAccountNo:
+              type: string
+            fromAccountHolder:
+              type: string
+            errorId:
+              type: string
+            errorDesc:
+              type: string
+            accessToken:
+              type: string
+            sellerName:
+              type: string
+            trxAmount:
+              type: string
+            totalAmount:
+              type: string
+            trxStatus:
+              type: string
+              enum: ['S', 'F']
+            channel:
+              type: string
+            dbtrAgt:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              data:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: started
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

@@ -1,0 +1,158 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get: 
+  tags:
+    - Transaction
+  operationId: getTransactionById
+  summary: Get Transaction By Id.
+  description: Retrieve id of the transaction and returns information with that id.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              txnLogs: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id: 
+                      type: string
+                      example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
+                    createdAt: 
+                      type: string
+                      format: date-time
+                      example: '2023-09-07T18:13:41.386Z'
+                    cRIB:
+                      type: integer
+                      example: 60000
+                    cRMB:
+                      type: integer
+                      example: 50000
+                    cCIB:
+                      type: integer
+                      example: 100000
+                    cCMB:
+                      type: integer
+                      example: 100000
+                    nRIB:
+                      type: integer
+                      example: 60000
+                    nRMB:
+                      type: integer
+                      example: 50000
+                    nCIB:
+                      type: integer
+                      example: 1000
+                    nCMB:
+                      type: integer
+                      example: 1000
+                    status:
+                      type: integer
+                      example: 1
+                    tid:
+                      type: integer
+                      example: 1
+    '400':
+      description: Invalid id
+    '403':
+      description: Forbidden
+    
+put: 
+  tags:
+    - Transaction
+  operationId: updateTransactionById
+  summary: Update transaction by it's id.
+  description: Retrieves id, transaction information and update transaction with that id.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            id:
+              type: string
+              example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
+            checker:
+              type: string
+              format: email
+              example: checker@gmail.com
+            msg:
+              type: string
+              example: This is a test message.
+            status:
+              type: integer
+              example: 1
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              cRIB:
+                type: integer
+                example: 60000
+              cRMB:
+                type: integer
+                example: 50000
+              cCIB:
+                type: integer
+                example: 100000
+              cCMB:
+                type: integer
+                example: 100000
+              nRIB:
+                type: integer
+                example: 60000
+              nRMB:
+                type: integer
+                example: 50000
+              nCIB:
+                type: integer
+                example: 1000
+              nCMB:
+                type: integer
+                example: 1000
+              status:
+                type: integer
+                example: 1
+              msg:
+                type: string
+                example: This is test message.
+              createdAt: 
+                type: string
+                format: date-time
+                example: '2023-09-07T18:13:41.386Z'
+              updatedAt: 
+                type: string
+                format: date-time
+                example: '2023-09-07T18:14:16.824Z'
+              updateChecker:
+                type: string
+                example: checker@gmail.com
+              trxId:
+                type: string
+                example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
+    '403':
+      description: Forbidden

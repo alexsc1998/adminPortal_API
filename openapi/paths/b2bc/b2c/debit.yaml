@@ -1,0 +1,115 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2C
+  operationId: debitB2C
+  summary: Debit
+  description: |
+    This is called when the apporvalStatus returned from checkTransactionStatus or from the socket message is 'A' which means approved.
+  security: []
+  parameters: 
+    - name: x-session-id
+      in: header
+      required: true
+      schema: 
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            frBIC:
+              type: string
+            toBIC:
+              type: string
+            bizSvc:
+              type: string
+            txId:
+              type: string
+            interBkSttlmAmt:
+              type: string
+            instgAgtBIC:
+              type: string
+            dbtrNm:
+              type: string
+            dbtrAcctId:
+              type: string
+            dbtrAcctTp:
+              type: string
+            dbtrAgtBIC:
+              type: integer
+            cdtrAgtBIC:
+              type: integer
+            cdtrNm:
+              type: string
+            cdtrAcctTp:
+              type: string
+            cdtrAcctId:
+              type: string
+            recptRef:
+              type: string
+            channel:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              PymtConfirmRs:
+                type: object
+                properties:
+                  resHeader:
+                    type: object
+                    properties:
+                      FrBIC:
+                        type: string
+                      TOBIC:
+                        type: string
+                      BMI:
+                        type: string
+                      MsgDef:
+                        type: string
+                      BizSvc:
+                        type: string
+                      CreDt:
+                        type: string
+                      CpyDup:
+                        type: integer
+                      PssblDplct:
+                        type: string
+                      Rtld:
+                        type: string
+                  resBody:
+                    type: object
+                    properties: 
+                      MID:
+                        type: string
+                      CreDtTm:
+                        type: string
+                      OrgnlMsgId:
+                        type: string
+                      OrgnlMsgNmId:
+                        type: string
+                      OrgnlEndToEndId:
+                        type: string
+                      Orgn1TxId:
+                        type: string
+                      TxSts:
+                        type: string
+                      StsRsnInf:
+                        type: string
+                      CdtrNm:
+                        type: string
+                      CdtrAcctId:
+                        type: string
+                      CdtrAcctCstmrCtg:
+                        type: string
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

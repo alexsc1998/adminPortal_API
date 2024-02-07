@@ -1,0 +1,45 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+get: 
+  tags:
+    - BCommon
+  operationId: getErrorLog
+  summary: Get error log
+  description: Retrieve error logs of the transactions.
+  security: []
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              data: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    page:
+                      type: string
+                      example: '/'
+                    error_code:
+                      type: string
+                      example: '#E464'
+                    error_description:
+                      type: string
+                      example: Failed to save private key
+                    api_id:
+                      type: string
+                      example: '00002937'
+                    log_dt:
+                      type: string
+                      format: date-time
+                      example: '2023-09-11T16:15:07.204Z'
+                    session:
+                      type: string
+                      example: 1a61fa09c12a7f5eedfe8dc49d61c01f
+    '403':
+      description: Forbidden
+    '500':
+      description: Failed to retrieve txn number

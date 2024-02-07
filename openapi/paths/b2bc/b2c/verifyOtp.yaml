@@ -1,0 +1,72 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2C
+  operationId: verifyOtpB2C
+  summary: Verify OTP
+  description: |
+    Verifies the otp entered in the frontend. It accepts a deliveryChannel(the mfa method), credential(the encrypted otp) and credentialIV(the IV used in the encryption process).
+  security: []
+  parameters: 
+    - name: x-session-id
+      in: header
+      required: true
+      schema: 
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            otp:
+              type: string
+            iv:
+              type: string
+            accessToken:
+              type: string
+            channel:
+              type: string
+            deliveryChannel:
+              type: string
+            dbtrAgt:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              data:
+                type: object
+                properties:
+                  header:
+                    type: object
+                    properties:
+                      trxType:
+                        type: string
+                      timestamp:
+                        type: string
+                      tracingNo:
+                        type: string
+                      channel:
+                        type: string
+                      accessToken:
+                        type: string
+                      signature:
+                        type: string
+                      status:
+                        type: integer
+                      errorId:
+                        type: string
+                        nullable: true
+                      errorDesc:
+                        type: string
+                        nullable: true
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

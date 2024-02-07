@@ -1,0 +1,33 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get:
+  tags:
+    - User
+  operationId: checkUser
+  summary: Check User in Group
+  description: Retrieves the id of the user group and check if the group is empty or not.
+  security: []
+  parameters:
+    - name: userGroupId
+      in: query
+      description: The userGroupId that needs to be fetched
+      required: true
+      schema:
+        type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              isThereUser:
+                type: boolean
+                example: true
+    '400':
+      description: Please include userGroupId in the query.
+    '403':
+      description: Forbidden
+    '500':
+      description: Invalid User-Group Id

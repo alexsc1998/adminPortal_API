@@ -1,0 +1,38 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+post:
+  tags:
+    - Password History
+  operationId: changePwdHistoryDate
+  summary: Change Date
+  description: Retrives email, day and change the date of last password update. Here, day refers to the distance from today.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            email: 
+              type: string
+              example: john@gmail.com
+            day: 
+              type: integer
+              example: 1
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+                example: success
+    '400':
+      description: invalid id
+    '403':
+      description: Forbidden
+    '404':
+      description: Email not found

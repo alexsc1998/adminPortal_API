@@ -1,0 +1,93 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - BCommon
+  operationId: submitMerchantData
+  summary: Submit merchant data
+  description: The endpoint for submitting merchant data.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            msgId:
+              type: string
+            xpryDt:
+              type: string
+            txnId:
+              type: string
+            amount:
+              type: string
+            creditorName:
+              type: string
+            payerName:
+              type: string
+            refs1:
+              type: string
+            redirectUrl:
+              type: string
+            username:
+              type: string
+            accptblSrcOfFunds:
+              type: string
+            customerMBL:
+              type: string
+            customerUsedMBL:
+              type: string
+            customerMSL:
+              type: string
+            customerUsedMSL:
+              type: string
+            mfaMethod:
+              type: string
+            endToEndId:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              id:
+                type: string
+              msgId:
+                type: string
+              txId:
+                type: string
+              amount:
+                type: string
+              endToEndId:
+                type: string
+              payerName:
+                type: string
+              redirectUrl:
+                type: string
+              xpryDt:
+                type: string
+              creditorName:
+                type: string
+              accptblSrcOfFunds:
+                type: string
+              refs1:
+                type: string
+              customerMBL:
+                type: string
+              customerUsedMBL:
+                type: string
+              customerMSL:
+                type: string
+              customerUsedMSL:
+                type: string
+              mfaMethod:
+                type: string
+    '403':
+      description: Forbidden
+    '404':
+      description: No private key found
+    '500':
+      description: Internal Server Error

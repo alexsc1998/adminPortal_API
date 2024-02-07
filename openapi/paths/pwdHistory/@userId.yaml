@@ -1,0 +1,31 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get:
+  tags:
+    - Password History
+  operationId: getHistoryByUserId
+  summary: Get password history
+  description: 'Retruns password history for the user with id{userid}'
+  security: []
+  parameters:
+    - name: userId
+      in: path
+      description: The userId that needs to be fetched
+      required: true
+      schema:
+        type: string
+  responses: 
+    '204':
+      description: Success
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              error:
+                type: string
+                example: it's been more than 60 days since you've updated your password, click ok to update your password now
+    '404':
+      description: User not found

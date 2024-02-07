@@ -1,0 +1,180 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: BANKRAKYAT API Documentation
+  contact:
+    email: alexlim@mmdt.cc
+    url: 'https://afraid-catfish-13.redoc.ly'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: 'https://upload.wikimedia.org/wikipedia/commons/1/12/Bank_Rakyat_English.png'
+  description: |
+    This is an official **API documentation**.
+    You can view all APIs and which these APIs for and can test it directly.
+    There are mainly three parts. `Admin Portal`, `B2B` and `B2C`
+
+tags:
+  - name: Admin Portal
+    description: User related APIs
+  - name: Common
+    description: Operations about users.
+  - name: User
+    description: Operations about users.
+  - name: Group
+    description: Operations about users.
+  - name: Role
+    description: Operations about users.
+  - name: Transaction
+    description: Operations about users.
+  - name: Maintenance
+    description: Operations about users.
+  - name: Password History
+    description: Operations about users.
+  
+  - name: BCommon
+    description: All common APIs in B2B & B2C.
+    x-displayName: Common
+  - name: B2B
+    description: All APIs about B2B.
+    x-displayName: B2B
+  - name: B2C
+    description: All APIs about B2C
+    x-displayName: B2C
+  
+x-tagGroups:
+  - name: Admin Portal
+    tags:
+      - Common
+      - User
+      - Group
+      - Role
+      - Transaction
+      - Maintenance
+      - Password History
+  - name: B2B & B2C
+    tags:
+      - BCommon
+      - B2B
+      - B2C
+
+servers:
+  - url: 'http://54.169.180.154:5001/api'
+  - url: 'http://54.169.180.154:5000/api'
+paths:
+  '/common/pending':
+    $ref: paths/common/pending.yaml
+  '/users': 
+    $ref: paths/users/empty.yaml
+  '/users/login':
+    $ref: paths/users/login.yaml
+  '/users/check':
+    $ref: paths/users/check.yaml
+  '/users/activate':
+    $ref: paths/users/activate.yaml
+  '/users/forgot-password':
+    $ref: paths/users/forgetPwd.yaml
+  '/users/check-current-password':
+    $ref: paths/users/chkCurrentPwd.yaml
+  '/users/check-token':
+    $ref: paths/users/chkToken.yaml
+  '/users/reset-password':
+    $ref: paths/users/resetPwd.yaml
+  '/users/change-status':
+    $ref: paths/users/changeStatus.yaml
+  '/users/{id}':
+    $ref: paths/users/@id.yaml
+  '/groups':
+    $ref: paths/userGroups/empty.yaml
+  '/groups/{id}':
+    $ref: paths/userGroups/@id.yaml
+  '/roles':
+    $ref: paths/roles/empty.yaml
+  '/transactions':
+    $ref: paths/transaction/empty.yaml
+  '/transactions/last-updated':
+    $ref: paths/transaction/lastUpdated.yaml
+  '/transactions/{id}':
+    $ref: paths/transaction/@id.yaml
+  '/maintenance':
+    $ref: paths/maintenance/empty.yaml
+  '/maintenance/{id}':
+    $ref: paths/maintenance/@id.yaml
+  '/maintenance/approve':
+    $ref: paths/maintenance/approve.yaml
+  '/maintenance/reject':
+    $ref: paths/maintenance/reject.yaml
+  '/maintenance/complete':
+    $ref: paths/maintenance/complete.yaml
+  '/maintenance/rejection/{id}':
+    $ref: paths/maintenance/rejection@id.yaml
+  '/password-histories/{userId}':
+    $ref: paths/pwdHistory/@userId.yaml
+  '/password-histories/change-date':
+    $ref: paths/pwdHistory/changeDate.yaml
+
+  '/getprivatekey':
+    $ref: paths/b2bc/common/privateKey.yaml
+  '/setting':
+    $ref: paths/b2bc/common/setting.yaml
+  '/api-log':
+    $ref: paths/b2bc/common/apiLog.yaml
+  '/error-log':
+    $ref: paths/b2bc/common/errorLog.yaml
+  '/transaction-number':
+    $ref: paths/b2bc/common/txnNumber.yaml
+  '/login-session':
+    $ref: paths/b2bc/common/loginSession/empty.yaml
+  # '/login-session/{sessionID}':
+  #   $ref: paths/b2bc/common/loginSession/@sessionID.yaml
+  '/merchant-data':
+    $ref: paths/b2bc/common/merchantData.yaml
+  '/sign-message':
+    $ref: paths/b2bc/common/signMessage.yaml
+  '/verify-signature':
+    $ref: paths/b2bc/common/verifySignature.yaml
+
+  '/b2b/loginb':
+    $ref: paths/b2bc/b2b/login.yaml
+  '/b2b/notify-loginb':
+    $ref: paths/b2bc/b2b/notifyLogin.yaml
+  '/b2b/transaction':
+    $ref: paths/b2bc/b2b/createTransaction.yaml
+  '/b2b/logoutb':
+    $ref: paths/b2bc/b2b/logout.yaml
+  '/b2b/approveB2bFundTransferFpx':
+    $ref: paths/b2bc/b2b/approveB2BFundTransferFPX.yaml
+  '/b2b/rejectB2bFundTransferFpx':
+    $ref: paths/b2bc/b2b/rejectB2BFundTransferFPX.yaml
+  '/b2b/ForceLogout':
+    $ref: paths/b2bc/b2b/forceLogout.yaml
+  
+  '/b2c/login':
+    $ref: paths/b2bc/b2c/login.yaml
+  '/b2c/notifyLogin':
+    $ref: paths/b2bc/b2c/notifyLogin.yaml
+  '/b2c/checkusername':
+    $ref: paths/b2bc/b2c/checkUsername.yaml
+  '/b2c/authorizetransaction':
+    $ref: paths/b2bc/b2c/authorizeTransaction.yaml
+  '/b2c/notifytransaction':
+    $ref: paths/b2bc/b2c/notifyTransaction.yaml
+  '/b2c/verifyotp':
+    $ref: paths/b2bc/b2c/verifyOtp.yaml
+  '/b2c/updatetransaction':
+    $ref: paths/b2bc/b2c/updateTransaction.yaml
+  '/b2c/gettransactiondetail':
+    $ref: paths/b2bc/b2c/getTransactionDetail.yaml
+  '/b2c/account/{id}':
+    $ref: paths/b2bc/b2c/account@id.yaml
+  '/b2c/checktxnstatus':
+    $ref: paths/b2bc/b2c/checkTransactionStatus.yaml
+  '/b2c/debit':
+    $ref: paths/b2bc/b2c/debit.yaml
+  '/b2c/ISecureCallback':
+    $ref: paths/b2bc/b2c/iSecureCallback.yaml
+  '/b2c/logout': 
+    $ref: paths/b2bc/b2c/logout.yaml
+  '/b2c/ForceLogout':
+    $ref: paths/b2bc/b2c/forceLogout.yaml

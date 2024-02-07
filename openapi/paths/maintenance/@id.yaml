@@ -1,0 +1,165 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get:
+  tags:
+    - Maintenance
+  operationId: getMaintenanceById
+  summary: Get maintenance by id
+  description: Retrieves id and returns information with that id.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              mntLog:
+                type: object
+                properties: 
+                  id: 
+                    type: string
+                    example: ee289ac9-8a87-4710-8e20-fe9a308f777b
+                  createdAt:
+                    type: string
+                    format: date-time
+                    example: '2023-09-07T16:28:04.651Z'
+                  submittedAt: 
+                    type: string
+                    format: date-time
+                    example: '2023-09-07T16:28:04.651Z'
+                  submittedBy:
+                    type: string
+                    format: email
+                    example: 'john@gmail.com'
+                  startDate: 
+                    type: string
+                    format: date-time
+                    example: '2023-09-07T16:28:00.000Z'
+                  endDate: 
+                    type: string
+                    format: date-time
+                    example: '2023-09-07T17:00:00.000Z'
+                  iRakyatYN:
+                    type: boolean
+                    example: false
+                  iBizRakyatYN:
+                    type: boolean
+                    example: true
+                  iRakyatStatus:
+                    type: string
+                    example: ''
+                  iBizRakyatStatus:
+                    type: string
+                    example: C
+                  submissionStatus:
+                    type: string
+                    example: New
+                  approvalStatus:
+                    type: string
+                    example: Approved
+                  approvedBy:
+                    type: string
+                    format: email
+                    example: checker@gmail.com
+                  isCompleted:
+                    type: boolean
+                    example: false
+                  rejectReason:
+                    type: string
+                    example: ''
+                  isDeleted:
+                    type: boolean
+                    example: false
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    example: '2023-09-07T16:28:37.480Z'
+    '403':
+      description: Forbidden
+    '404':
+      description: Maintenance not found
+  
+put:
+  tags:
+    - Maintenance
+  operationId: updateMaintenanceById
+  summary: Update maintenance by id
+  description: Retrieves id, maintenance information and update maintenance with it.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            startDate:
+              type: string
+              format: date-time
+              example: '2023-09-07T16:28:00.000Z'
+            endDate:
+              type: string
+              format: date-time
+              example: '2023-09-07T17:00:00.000Z'
+            iRakyatYN:
+              type: boolean
+              example: false
+            iBizRakyatYN:
+              type: boolean
+              example: true
+            submittedBy:
+              type: string
+              format: email
+              example: john@gmail.com
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+                example: success
+    '403':
+      description: Forbidden
+    '404':
+      description: Maintenance not found
+
+delete:
+  tags:
+    - Maintenance
+  operationId: deleteMaintenanceById
+  summary: Delete maintenance by id
+  description: Retrieves id and deletes maintenace with that id.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  responses: 
+    '200':
+      $ref: ../../components/response/msgSuccess.yaml
+    '403':
+      description: Forbidden
+    '404':
+      description: Maintenance not found

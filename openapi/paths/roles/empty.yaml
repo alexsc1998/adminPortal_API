@@ -1,0 +1,76 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get: 
+  tags:
+    - Role
+  operationId: getUserRoles
+  summary: Get all user roles.
+  description: Returns the list of all registered user roles.
+  security: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              roles: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id: 
+                      type: integer
+                    name: 
+                      type: string 
+    '403': 
+      description: Forbidden 
+
+post:
+  tags:
+    - Role
+  operationId: createUserRole
+  summary: Create user role
+  description: Retrieves role information and create a new user role with it.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            role:
+              type: string
+              example: normal user 2
+  responses:
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              roles: 
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id: 
+                      type: integer
+                      example: 5
+                    name: 
+                      type: string 
+                      example: normal user 2
+    '400':
+      description: Invalid user role
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Invalid role
+    '403': 
+      description: Forbidden

@@ -1,0 +1,126 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2B
+  operationId: createTransactionB2B
+  summary: Create transaction
+  description: |
+    This calls the other api to create transaction and if the response is successful it saves the transaction record to db.
+  security: []
+  parameters: 
+    - name: x-session-id
+      in: header
+      required: true
+      schema: 
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            corporateLogonID:
+              type: string
+            userID:
+              type: string
+            fpxTrxID:
+              type: string
+            fpxTrxType:
+              type: string
+            referenceNo:
+              type: string
+            exchangeID:
+              type: string
+            trxTimestamp:
+              type: string
+            fromAccNo:
+              type: string
+            fromAccType:
+              type: string
+            fromAccHolder:
+              type: string
+            sellerOrdNo:
+              type: string
+            sellerName:
+              type: string
+            otherPmtDetails:
+              type: string
+            trxAmount:
+              type: integer
+            trxCharge:
+              type: integer
+            totalAmount:
+              type: integer
+            trxStatus:
+              type: string
+            channel:
+              type: string
+            accessToken:
+              type: string
+            dbtrAgt:
+              type: string
+            endToEndId:
+              type: string
+            productId:
+              type: string
+            latlong:
+              type: string
+            xpryDt:
+              type: string
+            bizSvc:
+              type: string
+            cdtrAcctId:
+              type: string
+            cdtrAcctTp:
+              type: string
+            cdtrAgtBIC:
+              type: string
+            dbtrAcctId:
+              type: string
+            dbtrAcctTp:
+              type: string
+            dbtrAgtBIC:
+              type: string
+            dbtrNm:
+              type: string
+            frBIC:
+              type: string
+            toBIC:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              data:
+                type: object
+                properties:
+                  header:
+                    type: object
+                    properties:
+                      trxType:
+                        type: string
+                      timestamp:
+                        type: string
+                      tracingNo:
+                        type: string
+                      channel:
+                        type: string
+                      accessToken:
+                        type: string
+                      signature:
+                        type: string
+                      status:
+                        type: integer
+                      errorId:
+                        type: string
+                      errorDesc:
+                        type: string
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

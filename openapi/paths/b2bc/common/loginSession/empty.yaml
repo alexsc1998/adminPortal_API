@@ -1,0 +1,96 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - BCommon
+  operationId: createLoginSession
+  summary: Create login session
+  description: Retrieve userID, page and then create login session with that information.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            userID:
+              type: string
+              example: "johndoe"
+            page: 
+              type: string
+              example: "/"
+            channel:
+              type: string
+              enum: ['B2B', 'B2C']
+  responses: 
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              data:
+                type: object
+                properties:
+                  userID: 
+                    type: string
+                    example: 'johndoe'
+                  sessionID:
+                    type: string
+                    example: '603829c1d51b58cec56330b24aa95795'
+                  loginDt:
+                    type: string
+                    format: date-time
+    '403':
+      description: Forbidden
+    '500':
+      description: Failed to insert login session
+
+patch: 
+  tags:
+    - BCommon
+  operationId: updateLoginSession
+  summary: Update login session
+  description: Retrieve x-session-id, userID, page and then update login session with that information.
+  parameters: 
+    - name: x-session-id
+      in: header
+      required: true
+      schema: 
+        type: string
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            status:
+              type: string
+              enum: ['active', 'expired', 'logged_out']
+            page: 
+              type: string
+              example: "/"
+            reason:
+              type: string
+              enum: ['C', 'S', 'F']
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message: 
+                type: string
+                example: success
+    '400':
+      description: Please include status in the body
+    '403':
+      description: Forbidden
+    '404':
+      description: Login session not found
+    '500':
+      description: Failed to update login session

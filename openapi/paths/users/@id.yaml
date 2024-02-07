@@ -1,0 +1,123 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get: 
+  tags:
+    - User
+  operationId: getUserById
+  summary: Get user by id
+  description: Retrieves id of the user and returns user information with that id.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              user: 
+                type: object
+                properties: 
+                  id: 
+                    type: string
+                    example: 8cb5f29d-19c5-428b-8d1b-d6ecb814dc86
+                  name: 
+                    type: string
+                    example: John Doe
+                  email: 
+                    type: string
+                    format: email
+                    example: john@gmail.com
+                  userGroup: 
+                    type: string
+                    example: 53c087f1-f2cb-4472-861e-26edd39c6d7b
+                  staffId:
+                    type: string
+                    example: john434
+                  status:
+                    type: string
+                    enum: ['active', 'locked']
+                    example: active
+    '403':
+      description: Forbidden
+    '404':
+      description: User not found
+
+put: 
+  tags:
+    - User
+  operationId: updateUserById
+  summary: Update user by id
+  description: Update the user by it's current id.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            name:
+              type: string
+              example: "John Doe"
+            userGroup: 
+              type: string
+              example: "d1c24371-9f82-41ae-8c45-943a3b3cb4ab"
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+                example: success
+    '403':
+      description: Forbidden
+    '404':
+      description: User not found
+
+delete: 
+  tags:
+    - User
+  operationId: deleteUserById
+  summary: Delete user by id
+  description: Delete current user by it's id.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+                example: 8cb5f29d-19c5-428b-8d1b-d6ecb814dc86
+    '403':
+      description: Forbidden
+    '404':
+      description: User not found

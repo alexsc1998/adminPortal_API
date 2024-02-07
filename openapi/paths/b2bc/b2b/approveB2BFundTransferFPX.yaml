@@ -1,0 +1,50 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2B
+  operationId: approveB2BFuncTransferFPX
+  summary: Approve fund transfer FPX
+  description: |
+    This endpoint accepts an xml and based on the element this will be processed as approve.
+  security: []
+  requestBody:
+    content:
+      application/xml:
+        schema: 
+          type: string
+        example: | 
+          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fpx="http://fpx.imocha/">
+            <soapenv:Header/>
+            <soapenv:Body>
+              <fpx:approveB2bFundTransferFpx>
+                <username>manreny</username>
+                <companyId>1rer</companyId>
+                <uuid>20230915BKRM0602862OCB00000106</uuid>
+              </fpx:approveB2bFundTransferFpx>
+            </soapenv:Body>
+          </soapenv:Envelope>
+  responses: 
+    '200':
+      description: Success
+      content: 
+        application/xml:
+          example: |
+            <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:ns2="http://fpx.imocha/">
+              <soap:Body>
+                  <ns2:approveB2bFundTransferFpxResponse xmlns:ns2="http://fpx.imocha/">
+                      <response>
+                          <responseCode>9999</responseCode>
+                          <errorCode>E4600801</errorCode>
+                          <txnRefNum></txnRefNum>
+                          <username>manreny</username>
+                          <companyId>1rer</companyId>
+                          <accountNumber></accountNumber>
+                          <buyerName></buyerName>
+                          <uuid>20230915BKRM0602862OCB00000106</uuid>
+                      </response>
+                  </ns2:approveB2bFundTransferFpxResponse>
+              </soap:Body>
+            </soap:Envelope>
+    '403':
+      description: Forbidden

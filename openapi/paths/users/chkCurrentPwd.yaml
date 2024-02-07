@@ -1,0 +1,36 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+post: 
+  tags:
+    - User
+  operationId: checkCurrentPassword
+  summary: Check current password
+  description: Retrieve password and checks if it is the current password.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            id:
+              type: string
+              example: john@gmail.com
+            password:
+              type: string
+              example: "123456"
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+                example: success
+    '400':
+      description: Invalid Id
+    '403':
+      description: Forbidden

@@ -1,0 +1,85 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2C
+  operationId: loginB2C
+  summary: Login
+  description: |
+    Receives username, credential(encrypted password) and credentialIv(the IV used in the encryption process) and returns cif, mbl and misl(with transaction limit value and used limit value).
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            username:
+              type: string
+            password:
+              type: string
+            accessToken:
+              type: string
+            iv:
+              type: string
+            channel:
+              type: string
+            txnAmount:
+              type: integer
+            dbtrAgt:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              data:
+                type: object
+                properties:
+                  header:
+                    type: object
+                    properties:
+                      trxType:
+                        type: string
+                      timestamp:
+                        type: string
+                      tracingNo:
+                        type: string
+                      channel:
+                        type: string
+                      accessToken:
+                        type: string
+                      signature:
+                        type: string
+                      status:
+                        type: integer
+                      errorId:
+                        type: string
+                      errorDesc:
+                        type: string
+                  body: 
+                    type: object
+                    properties:
+                      cif:
+                        type: string
+                      mbl:
+                        type: object
+                        properties:
+                          trxLimit: 
+                            type: integer
+                          usedLimit:
+                            type: integer
+                      msl:
+                        type: object
+                        properties:
+                          trxLimit:
+                            type: number
+                          usedLimit:
+                            type: number
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

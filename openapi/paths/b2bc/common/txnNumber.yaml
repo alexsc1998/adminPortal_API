@@ -1,0 +1,57 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+get: 
+  tags:
+    - BCommon
+  operationId: getTxnNumber
+  summary: Get transaction Number
+  description: Retrieve the number of latest transaction.
+  security: []
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              txn_num: 
+                type: string
+                example: "00000170"
+    '403':
+      description: Forbidden
+    '500':
+      description: Failed to retrieve txn number
+# post:
+#   tags: 
+#     -  BCommon
+#   operationId: createTxnNumber
+#   summary: Create transaction number
+#   description: Retrieve txnID and create new transaction number with that.
+#   security: []
+#   requestBody:
+#     content:
+#       application/json:
+#         schema:
+#           type: object
+#           properties: 
+#             txnID:
+#               type: string
+#               example: "8861452"
+#   responses: 
+#     '201':
+#       description: Success
+#       content:
+#         application/json:
+#           schema:
+#             type: object
+#             properties: 
+#               message:
+#                 type: string
+#                 example: 'success'
+#     '400':
+#       description: please include txnID in the request
+#     '403':
+#       description: Forbidden
+#     '500':
+#       description: Failed to save private key

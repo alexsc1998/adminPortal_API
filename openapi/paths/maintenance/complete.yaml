@@ -1,0 +1,42 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+post:
+  tags:
+    - Maintenance
+  operationId: completeMaintenances
+  summary: Complete maintenances
+  description: Retrieves id array and complete all maintenances with the id in the id array.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            ids:
+              type: array
+              items: 
+                type: string
+              example: [
+                ee289ac9-8a87-4710-8e20-fe9a308f777b,
+                e3d7077d-ba83-49be-9b64-1a831c026d4e
+              ]
+            email:
+              type: string
+              format: email
+              example: john@gmail.com
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message: 
+                type: string
+                example: success
+    '403':
+      description: Forbidden
+    '404':
+      description: Id is invalid

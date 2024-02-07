@@ -1,0 +1,58 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2C
+  operationId: forceLogoutB2C
+  summary: ForceLogout
+  description: |
+    This is also a soap api endpoint for them to forcefully invalidate a user session.
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            header: 
+              type: object
+              properties: 
+                transactionType:
+                  type: string
+                sendTimestamp:
+                  type: string
+                version:
+                  type: string
+                fpxTxnNo:
+                  type: string
+                referenceNo:
+                  type: string
+                signature:
+                  type: string
+            body:
+              type: object
+              properties: 
+                sessionId:
+                  type: string
+                username:
+                  type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              header:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  timestamp:
+                    type: string
+                    format: date-time
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

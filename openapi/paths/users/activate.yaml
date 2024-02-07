@@ -1,0 +1,33 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+patch:
+  tags:
+    - User
+  operationId: activateUser
+  summary: Activate User
+  description: Retrieves token and activate the account(user) with that token.
+  security: []
+  parameters:
+    - name: token
+      in: query
+      description: The token that needs to be fetched
+      required: true
+      schema:
+        type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              id:
+                type: string
+                example: 8cb5f29d-19c5-428b-8d1b-d6ecb814dc86
+    '400':
+      description: The token has expired.
+    '403':
+      description: Forbidden
+    '404':
+      description: Token not found

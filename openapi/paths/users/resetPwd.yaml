@@ -1,0 +1,48 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+post: 
+  tags:
+    - User
+  operationId: resetPassword
+  summary: Reset Password
+  description: Reset the password of the logged in user. If user have changed password many times in a day and reaches maximum frequency, user can't reset password.
+  security: []
+  parameters: 
+    - name: x-session-id
+      in: header
+      required: true
+      schema: 
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            password:
+              type: string
+              example: "123456"
+            id: 
+              type: string
+              example: "johndoe"
+            src:
+              type: string
+              example: 'activate'
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              userId:
+                type: string
+                description: Userid of the user
+                example: johndoe
+              password:
+                type: string
+                description: Hashed password
+                example: '************'
+    '403':
+      description: Forbidden

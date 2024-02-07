@@ -1,0 +1,61 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2C
+  operationId: iSecureCallbackB2C
+  summary: ISecureCallback
+  description: |
+    This is a soap api. As I tried to explain in CheckTransactionStatus section, the frontend initiates a socket connection with the backend if the MFA method is 'MA' after calling authorizetransaction. Authorizetransaction calls this endpoint sending a status and errors description and id if there is any. Then on this endpoint, the status is checked if it is 'A' and if it is it responds back with status of 1 else with a status of 0. It also emits an event to the socket with the data consisting of the status and transactionId. Then in the socket event listener, the socket associated with the transaction id is retrieved from a lookup table and the status will be sent to the client(frontend).
+  security: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            header: 
+              type: object
+              properties: 
+                transactionType:
+                  type: string
+                sendTimestamp:
+                  type: string
+                version:
+                  type: string
+                fpxTxnNo:
+                  type: string
+                referenceNo:
+                  type: string
+                signature:
+                  type: string
+            body:
+              type: object
+              properties: 
+                Status:
+                  type: string
+                  enum: ['A', 'R', 'C', 'F', 'P', 'O']
+                ErrorCode:
+                  type: string
+                ErrorId:
+                  type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              header:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  timestamp:
+                    type: string
+                    format: date-time
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

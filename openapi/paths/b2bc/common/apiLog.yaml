@@ -1,0 +1,55 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+get: 
+  tags:
+    - BCommon
+  operationId: getApiLog
+  summary: Get api log
+  description: Retrieve api logs with the page number. Each page has 10 api logs. Returns metadata(object) and data(array) which contains api logs.
+  security: []
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              metadata: 
+                type: object
+                properties:
+                  currentPage:
+                    type: integer
+                    example: 1
+                  pageSize:
+                    type: integer
+                    example: 10
+                  firstPage:
+                    type: integer
+                    example: 1
+                  lastPage:
+                    type: integer
+                    example: 175
+                  totalRecords:
+                    type: integer
+                    example: 1747
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    log_dt:
+                      type: string
+                      format: date-time
+                    page: 
+                      type: string
+                    api_name:
+                      type: string
+                    request:
+                      type: string
+                    response:
+                      type: string
+    '403':
+      description: Forbidden
+    '500':
+      description: Failed to retrieve txn number

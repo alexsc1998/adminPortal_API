@@ -1,0 +1,89 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+get:
+  tags:
+    - User
+  operationId: getAllUsers
+  summary: Get all users
+  description: Get the list of all registered users.
+  security: []
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            title: User
+            description: Hello
+            items: 
+              type: object
+              properties:
+                id: 
+                  type: string
+                  example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
+                name: 
+                  type: string 
+                  example: John Doe
+                email: 
+                  type: string
+                  example: john.smith@example.com
+                role: 
+                  type: string 
+                  example: manager 1
+                userGroup: 
+                  type: string
+                  example: New Manager Group 1
+                staffId: 
+                  type: string 
+                  example: john120
+                status: 
+                  type: string 
+                  enum: ['active', 'locked']
+                  example: active
+                idx: 
+                  type: integer
+                  example: 1
+    '403':
+      description: Forbidden
+post: 
+  tags: 
+    - User
+  operationId: createUser
+  summary: Create user
+  security: []
+  description: Retrieves user information and create a new user with that information.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            name:
+              type: string
+              example: John Doe
+            email: 
+              type: string
+              format: email
+              example: john@gmail.com
+            userGroup:
+              type: string
+              example: e534b2e8-e138-4961-a6a8-0146c928f785
+            staffId:
+              type: string
+              example: john830
+  responses: 
+    '201':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+                example: success
+    '400':
+      description: Invalid Id
+    '403':
+      description: Forbidden

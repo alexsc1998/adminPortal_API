@@ -1,0 +1,86 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+post: 
+  tags:
+    - B2C
+  operationId: authorizeTransactionB2C
+  summary: Authorize transaction
+  description: |
+    This is called when the MFA method is ‘MO’ or ‘MA’ and the functionality is in the name. It authorizes the transaction.
+  security: []
+  parameters: 
+    - name: x-session-id
+      in: header
+      required: true
+      schema: 
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            transactionNo:
+              type: string
+            referenceNo:
+              type: string
+            trxTimestamp:
+              type: string
+            fromAccountNo:
+              type: string
+            fromAccountHolder:
+              type: string
+            errorId:
+              type: string
+            errorDesc:
+              type: string
+            creditorName:
+              type: string
+            accessToken:
+              type: string
+            trxAmount:
+              type: integer
+            totalAmount:
+              type: integer
+            channel:
+              type: string
+            method:
+              type: string
+            dbtrAgt:
+              type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              data:
+                type: object
+                properties:
+                  header:
+                    type: object
+                    properties:
+                      trxType:
+                        type: string
+                      timestamp:
+                        type: string
+                      tracingNo:
+                        type: string
+                      channel:
+                        type: string
+                      accessToken:
+                        type: string
+                      signature:
+                        type: string
+                      status:
+                        type: integer
+                      errorId:
+                        type: string
+                      errorDesc:
+                        type: string
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

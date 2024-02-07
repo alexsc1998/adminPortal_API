@@ -1,0 +1,97 @@
+servers: 
+  - url: 'http://54.169.180.154:5000/api' 
+get: 
+  tags:
+    - B2C
+  operationId: accountB2C
+  summary: Account
+  description: |
+    This returns the account(current,saving accounts) to choose from when proceeding with the transaction.
+  security: []
+  parameters:
+    - name: id
+      in: path
+      description: The id that needs to be fetched
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            data:
+              type: object
+              properties: 
+                msgId:
+                  type: string
+                currentDT:
+                  type: string
+                tnxId:
+                  type: string
+                amount:
+                  type: number
+                payerName:
+                  type: string
+                creditorName:
+                  type: string
+                currency:
+                  type: string
+                redirectURL:
+                  type: string
+                recipientReference:
+                  type: string
+                productId:
+                  type: string
+                merchantID:
+                  type: string
+                dbtrAgt:
+                  type: string
+                endToEndId:
+                  type: string
+                sourceOfFunds:
+                  type: string
+                xpryDt:
+                  type: string
+                frBIC:
+                  type: string
+                toBIC:
+                  type: string
+                dbtrAgtBIC:
+                  type: string
+                cdtrAcctId:
+                  type: string
+                cdtrAcctTp:
+                  type: string
+                cdtrAgtBIC:
+                  type: string
+                bizSvc:
+                  type: string
+                status:
+                  type: string
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              data:
+                type: object
+                properties: 
+                  accNo:
+                    type: string
+                  accName:
+                    type: string
+                  availableBalance:
+                    type: string
+                  creditCardNo:
+                    type: integer
+                  accHolderName:
+                    type: string
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error

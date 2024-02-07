@@ -1,0 +1,58 @@
+servers: 
+  - url: 'http://54.169.180.154:5001/api'
+post: 
+  tags: 
+    - User
+  operationId: loginUser
+  summary: Login
+  security: []
+  description: Retrieves email, password and login with that information. Returns user data if successful.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties: 
+            email:
+              type: string
+              format: email
+              example: john@gmail.com
+            password: 
+              type: string
+              example: "123456"
+  responses: 
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: 
+              id: 
+                type: string
+                example: 8cb5f29d-19c5-428b-8d1b-d6ecb814dc86
+              email:
+                type: string
+                format: email
+                example: john@gmail.com
+              status: 
+                type: string
+                example: "123456"
+              staffId: 
+                type: string
+                example: johndoe
+              role: 
+                type: string
+                example: normal user 1
+              userGroup: 
+                type: string
+                example: Normal User Group 1
+              token: 
+                type: string
+                example: '**************'
+    '401':
+      description: Invalid credentials
+    '403':
+      description: Forbidden
+    '404':
+      description: Invalid credentials
