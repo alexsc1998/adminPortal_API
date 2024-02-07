@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - B2B
   operationId: notifyLoginB2B
@@ -13,23 +13,19 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             accessToken:
               type: string
-            channel:
+            endToEndId:
               type: string
-            txnAmount:
-              type: integer
-            dbtrAgt:
-              type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               data:
                 type: object
                 properties:
@@ -54,7 +50,7 @@ post:
                         type: string
                       errorDesc:
                         type: string
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Internal Server Error

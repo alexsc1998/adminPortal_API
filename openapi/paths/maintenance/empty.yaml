@@ -1,5 +1,5 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 get:
   tags:
     - Maintenance
@@ -7,38 +7,38 @@ get:
   summary: Get all maintenance
   description: Returns the list of all maintenances.
   security: []
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               mntLogs:
                 type: array
-                items: 
+                items:
                   type: object
-                  properties: 
-                    id: 
+                  properties:
+                    id:
                       type: string
                       example: ee289ac9-8a87-4710-8e20-fe9a308f777b
-                    submittedAt: 
+                    submittedAt:
                       type: string
                       format: date-time
-                      example: '2023-09-07T16:28:04.651Z'
+                      example: "2023-09-07T16:28:04.651Z"
                     submittedBy:
                       type: string
                       format: email
-                      example: 'john@gmail.com'
-                    startDate: 
+                      example: "john@gmail.com"
+                    startDate:
                       type: string
                       format: date-time
-                      example: '2023-09-07T16:28:00.000Z'
-                    endDate: 
+                      example: "2023-09-07T16:28:00.000Z"
+                    endDate:
                       type: string
                       format: date-time
-                      example: '2023-09-07T17:00:00.000Z'
+                      example: "2023-09-07T17:00:00.000Z"
                     iRakyatYN:
                       type: boolean
                       example: false
@@ -47,7 +47,7 @@ get:
                       example: true
                     iRakyatStatus:
                       type: string
-                      example: ''
+                      example: ""
                     iBizRakyatStatus:
                       type: string
                       example: C
@@ -57,10 +57,10 @@ get:
                     approvalStatus:
                       type: string
                       example: Approved
-                    mid: 
+                    mid:
                       type: integer
                       example: 1
-    '403':
+    "403":
       description: Forbidden
 
 post:
@@ -75,17 +75,17 @@ post:
       application/json:
         schema:
           type: array
-          items: 
+          items:
             type: object
-            properties: 
+            properties:
               startDate:
                 type: string
                 format: date-time
-                example: '2023-09-07T16:28:04.651Z'
+                example: "2023-09-07T16:28:04.651Z"
               endDate:
                 type: string
                 format: date-time
-                example: '2023-09-07T16:28:04.651Z'
+                example: "2023-09-07T16:28:04.651Z"
               iRakyatYN:
                 type: boolean
                 example: true
@@ -95,17 +95,17 @@ post:
               submittedBy:
                 type: string
                 format: email
-                example: john@gmail.com            
-  responses: 
-    '201':
+                example: john@gmail.com
+  responses:
+    "201":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: success
-    '403':
+    "403":
       description: Forbidden

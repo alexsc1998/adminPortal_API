@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-patch: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+patch:
   tags:
     - BCommon
   operationId: updateLoginSession
@@ -19,32 +19,32 @@ patch:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             status:
               type: string
-              enum: ['active', 'expired', 'logged_out']
-            page: 
+              enum: ["active", "expired", "logged_out"]
+            page:
               type: string
               example: "/"
             reason:
               type: string
-              enum: ['C', 'S', 'F']
-  responses: 
-    '200':
+              enum: ["C", "S", "F"]
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
-              message: 
+            properties:
+              message:
                 type: string
                 example: success
-    '400':
+    "400":
       description: Please include status in the body
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Login session not found
-    '500':
+    "500":
       description: Failed to update login session

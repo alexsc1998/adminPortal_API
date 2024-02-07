@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - B2C
   operationId: verifyOtpB2C
@@ -8,38 +8,36 @@ post:
   description: |
     Verifies the otp entered in the frontend. It accepts a deliveryChannel(the mfa method), credential(the encrypted otp) and credentialIV(the IV used in the encryption process).
   security: []
-  parameters: 
+  parameters:
     - name: x-session-id
       in: header
       required: true
-      schema: 
+      schema:
         type: string
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             otp:
               type: string
             iv:
               type: string
             accessToken:
               type: string
-            channel:
-              type: string
             deliveryChannel:
               type: string
-            dbtrAgt:
+            endToEndId:
               type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               data:
                 type: object
                 properties:
@@ -66,7 +64,7 @@ post:
                       errorDesc:
                         type: string
                         nullable: true
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Internal Server Error

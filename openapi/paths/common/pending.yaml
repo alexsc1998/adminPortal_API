@@ -1,5 +1,5 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 post:
   tags:
     - Common
@@ -9,7 +9,7 @@ post:
   operationId: getPendingCountByType
   security: []
   responses:
-    '200':  
+    "200":
       description: Success
       content:
         application/json:
@@ -20,14 +20,14 @@ post:
 
             example:
               count: 2
-    '403':
+    "403":
       description: Forbidden
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             type:
               type: string
               description: Type of pending data
@@ -35,7 +35,7 @@ post:
       application/xml:
         schema:
           type: string
-          enum: ['transaction', 'maintenance', 'user']
+          enum: ["transaction", "maintenance", "user"]
           example: transaction
     description: Echo payload
     required: true

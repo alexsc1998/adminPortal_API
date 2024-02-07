@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-get: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+get:
   tags:
     - Role
   operationId: getUserRoles
@@ -8,24 +8,24 @@ get:
   description: Returns the list of all registered user roles.
   security: []
   responses:
-    '200':
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
             properties:
-              roles: 
+              roles:
                 type: array
                 items:
                   type: object
                   properties:
-                    id: 
+                    id:
                       type: integer
-                    name: 
-                      type: string 
-    '403': 
-      description: Forbidden 
+                    name:
+                      type: string
+    "403":
+      description: Forbidden
 
 post:
   tags:
@@ -39,30 +39,30 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             role:
               type: string
               example: normal user 2
   responses:
-    '201':
+    "201":
       description: Success
       content:
         application/json:
           schema:
             type: object
             properties:
-              roles: 
+              roles:
                 type: array
                 items:
                   type: object
                   properties:
-                    id: 
+                    id:
                       type: integer
                       example: 5
-                    name: 
-                      type: string 
+                    name:
+                      type: string
                       example: normal user 2
-    '400':
+    "400":
       description: Invalid user role
       content:
         application/json:
@@ -72,5 +72,5 @@ post:
               error:
                 type: string
                 example: Invalid role
-    '403': 
+    "403":
       description: Forbidden

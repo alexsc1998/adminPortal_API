@@ -1,5 +1,5 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 patch:
   tags:
     - User
@@ -14,20 +14,20 @@ patch:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               id:
                 type: string
                 example: 8cb5f29d-19c5-428b-8d1b-d6ecb814dc86
-    '400':
+    "400":
       description: The token has expired.
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Token not found

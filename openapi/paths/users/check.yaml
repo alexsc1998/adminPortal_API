@@ -1,5 +1,5 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 get:
   tags:
     - User
@@ -14,20 +14,20 @@ get:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               isThereUser:
                 type: boolean
                 example: true
-    '400':
+    "400":
       description: Please include userGroupId in the query.
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Invalid User-Group Id

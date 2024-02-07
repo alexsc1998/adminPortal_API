@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - BCommon
   operationId: submitMerchantData
@@ -12,7 +12,7 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             msgId:
               type: string
             xpryDt:
@@ -45,14 +45,14 @@ post:
               type: string
             endToEndId:
               type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               id:
                 type: string
               msgId:
@@ -85,9 +85,9 @@ post:
                 type: string
               mfaMethod:
                 type: string
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: No private key found
-    '500':
+    "500":
       description: Internal Server Error

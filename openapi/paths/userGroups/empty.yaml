@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-get: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+get:
   tags:
     - Group
   operationId: getUserGroups
@@ -8,34 +8,34 @@ get:
   description: Returns the list of all user groups.
   security: []
   responses:
-    '200':
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
             properties:
-              userGroups: 
+              userGroups:
                 type: array
                 items:
                   type: object
                   properties:
-                    id: 
+                    id:
                       type: string
                       example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
-                    name: 
-                      type: string 
+                    name:
+                      type: string
                       example: Normal User Group 1
-                    role: 
-                      type: string 
+                    role:
+                      type: string
                       example: normal user 1
-                    idx: 
+                    idx:
                       type: number
                       example: 1
-    '403': 
-      description: Forbidden 
+    "403":
+      description: Forbidden
 
-post: 
+post:
   tags:
     - Group
   operationId: createUserGroup
@@ -47,23 +47,23 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             roleId:
               type: integer
               example: 6
-            name: 
+            name:
               type: string
               example: Normal User Group 3
-  responses: 
-    '201':
+  responses:
+    "201":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: success
-    '403':
+    "403":
       description: Forbidden

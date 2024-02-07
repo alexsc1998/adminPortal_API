@@ -1,11 +1,12 @@
 servers:
-  - url: "http://20.205.146.121:5001/api"
-patch:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
-    - User
-  operationId: changeStatus
-  summary: Change Status
-  description: Retrieves status and change the status of the user with that.
+    - B2C
+  operationId: verifySMS
+  summary: Verify SMS
+  description: |
+    Verify SMS with otp if it is correctly generated from requested transaction ID and Number.
   security: []
   requestBody:
     content:
@@ -13,14 +14,10 @@ patch:
         schema:
           type: object
           properties:
-            email:
+            txnID:
               type: string
-              format: email
-              example: john@gmail.com
-            status:
+            telNo:
               type: string
-              enum: ["active", "locked"]
-              example: active
   responses:
     "200":
       description: Success
@@ -34,5 +31,5 @@ patch:
                 example: success
     "403":
       description: Forbidden
-    "404":
-      description: User email is invalid
+    "500":
+      description: Internal Server Error

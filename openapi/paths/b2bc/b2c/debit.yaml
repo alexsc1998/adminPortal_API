@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - B2C
   operationId: debitB2C
@@ -8,18 +8,18 @@ post:
   description: |
     This is called when the apporvalStatus returned from checkTransactionStatus or from the socket message is 'A' which means approved.
   security: []
-  parameters: 
+  parameters:
     - name: x-session-id
       in: header
       required: true
-      schema: 
+      schema:
         type: string
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             frBIC:
               type: string
             toBIC:
@@ -52,14 +52,14 @@ post:
               type: string
             channel:
               type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               PymtConfirmRs:
                 type: object
                 properties:
@@ -86,7 +86,7 @@ post:
                         type: string
                   resBody:
                     type: object
-                    properties: 
+                    properties:
                       MID:
                         type: string
                       CreDtTm:
@@ -109,7 +109,7 @@ post:
                         type: string
                       CdtrAcctCstmrCtg:
                         type: string
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Internal Server Error

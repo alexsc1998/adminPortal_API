@@ -1,5 +1,5 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 post:
   tags:
     - Maintenance
@@ -12,31 +12,32 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             ids:
               type: array
-              items: 
+              items:
                 type: string
-              example: [
-                ee289ac9-8a87-4710-8e20-fe9a308f777b,
-                e3d7077d-ba83-49be-9b64-1a831c026d4e
-              ]
+              example:
+                [
+                  ee289ac9-8a87-4710-8e20-fe9a308f777b,
+                  e3d7077d-ba83-49be-9b64-1a831c026d4e,
+                ]
             email:
               type: string
               format: email
               example: john@gmail.com
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
-              message: 
+            properties:
+              message:
                 type: string
                 example: success
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Id is invalid

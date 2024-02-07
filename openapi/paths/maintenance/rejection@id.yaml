@@ -1,5 +1,5 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 get:
   tags:
     - Maintenance
@@ -14,20 +14,20 @@ get:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               mntLogs:
                 type: array
-                items: 
+                items:
                   type: object
-                  properties: 
-                    id: 
+                  properties:
+                    id:
                       type: string
                       example: 444474e0-95a6-4344-b381-feb13bee8ca1
                     mid:
@@ -36,7 +36,7 @@ get:
                     rejectedDate:
                       type: string
                       format: date-time
-                      example: '2023-08-16T04:11:23.001Z'
+                      example: "2023-08-16T04:11:23.001Z"
                     submissionStatus:
                       type: string
                       example: New
@@ -46,8 +46,8 @@ get:
                       example: checker@gmail.com
                     reason:
                       type: string
-                      example: 'Reject reason'
-    '403':
+                      example: "Reject reason"
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Maintenance not found

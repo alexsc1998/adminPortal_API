@@ -1,5 +1,5 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 get:
   tags:
     - Maintenance
@@ -14,40 +14,40 @@ get:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               mntLog:
                 type: object
-                properties: 
-                  id: 
+                properties:
+                  id:
                     type: string
                     example: ee289ac9-8a87-4710-8e20-fe9a308f777b
                   createdAt:
                     type: string
                     format: date-time
-                    example: '2023-09-07T16:28:04.651Z'
-                  submittedAt: 
+                    example: "2023-09-07T16:28:04.651Z"
+                  submittedAt:
                     type: string
                     format: date-time
-                    example: '2023-09-07T16:28:04.651Z'
+                    example: "2023-09-07T16:28:04.651Z"
                   submittedBy:
                     type: string
                     format: email
-                    example: 'john@gmail.com'
-                  startDate: 
+                    example: "john@gmail.com"
+                  startDate:
                     type: string
                     format: date-time
-                    example: '2023-09-07T16:28:00.000Z'
-                  endDate: 
+                    example: "2023-09-07T16:28:00.000Z"
+                  endDate:
                     type: string
                     format: date-time
-                    example: '2023-09-07T17:00:00.000Z'
+                    example: "2023-09-07T17:00:00.000Z"
                   iRakyatYN:
                     type: boolean
                     example: false
@@ -56,7 +56,7 @@ get:
                     example: true
                   iRakyatStatus:
                     type: string
-                    example: ''
+                    example: ""
                   iBizRakyatStatus:
                     type: string
                     example: C
@@ -75,19 +75,19 @@ get:
                     example: false
                   rejectReason:
                     type: string
-                    example: ''
+                    example: ""
                   isDeleted:
                     type: boolean
                     example: false
                   updatedAt:
                     type: string
                     format: date-time
-                    example: '2023-09-07T16:28:37.480Z'
-    '403':
+                    example: "2023-09-07T16:28:37.480Z"
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Maintenance not found
-  
+
 put:
   tags:
     - Maintenance
@@ -107,15 +107,15 @@ put:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             startDate:
               type: string
               format: date-time
-              example: '2023-09-07T16:28:00.000Z'
+              example: "2023-09-07T16:28:00.000Z"
             endDate:
               type: string
               format: date-time
-              example: '2023-09-07T17:00:00.000Z'
+              example: "2023-09-07T17:00:00.000Z"
             iRakyatYN:
               type: boolean
               example: false
@@ -126,20 +126,20 @@ put:
               type: string
               format: email
               example: john@gmail.com
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: success
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Maintenance not found
 
 delete:
@@ -156,10 +156,10 @@ delete:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       $ref: ../../components/response/msgSuccess.yaml
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Maintenance not found

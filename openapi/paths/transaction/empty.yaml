@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-get: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+get:
   tags:
     - Transaction
   operationId: getTransactions
@@ -8,25 +8,25 @@ get:
   description: Returns the list of all transactions.
   security: []
   responses:
-    '200':
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
             properties:
-              txnLogs: 
+              txnLogs:
                 type: array
                 items:
                   type: object
                   properties:
-                    id: 
+                    id:
                       type: string
                       example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
-                    createdAt: 
+                    createdAt:
                       type: string
                       format: date-time
-                      example: '2023-09-07T18:13:41.386Z'
+                      example: "2023-09-07T18:13:41.386Z"
                     cRIB:
                       type: integer
                       example: 60000
@@ -57,10 +57,10 @@ get:
                     tid:
                       type: integer
                       example: 1
-    '403':
+    "403":
       description: Forbidden
-    
-post: 
+
+post:
   tags:
     - Transaction
   operationId: createTransaction
@@ -72,7 +72,7 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             cRIB:
               type: integer
               example: 50000
@@ -102,15 +102,15 @@ post:
               format: email
               example: john@gmail.com
   responses:
-    '201':
+    "201":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: success
-    '403':
+    "403":
       description: Forbidden

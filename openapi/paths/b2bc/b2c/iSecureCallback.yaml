@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - B2C
   operationId: iSecureCallbackB2C
@@ -13,10 +13,10 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
-            header: 
+          properties:
+            header:
               type: object
-              properties: 
+              properties:
                 transactionType:
                   type: string
                 sendTimestamp:
@@ -31,22 +31,22 @@ post:
                   type: string
             body:
               type: object
-              properties: 
+              properties:
                 Status:
                   type: string
-                  enum: ['A', 'R', 'C', 'F', 'P', 'O']
+                  enum: ["A", "R", "C", "F", "P", "O"]
                 ErrorCode:
                   type: string
                 ErrorId:
                   type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               header:
                 type: object
                 properties:
@@ -55,7 +55,7 @@ post:
                   timestamp:
                     type: string
                     format: date-time
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Internal Server Error

@@ -1,24 +1,24 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-get: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+get:
   tags:
     - BCommon
   operationId: getPrivateKey
   summary: GetPrivateKey
   description: Retrieve private key for the API.
   security: []
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
-              private_key: 
+            properties:
+              private_key:
                 type: string
                 example: "ddf753f9622694d2c5b3bf4aca8b49bf"
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: No private key found

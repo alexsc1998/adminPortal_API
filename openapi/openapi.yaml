@@ -60,8 +60,8 @@ x-tagGroups:
       - B2C
 
 servers:
-  - url: 'http://54.169.180.154:5001/api'
-  - url: 'http://54.169.180.154:5000/api'
+  - url: 'http://20.205.146.121:5001/api'
+  - url: 'http://20.205.146.121:5002/api'
 paths:
   '/common/pending':
     $ref: paths/common/pending.yaml
@@ -178,3 +178,7 @@ paths:
     $ref: paths/b2bc/b2c/logout.yaml
   '/b2c/ForceLogout':
     $ref: paths/b2bc/b2c/forceLogout.yaml
+  '/b2c/sms':
+    $ref: paths/b2bc/b2c/sendSMS.yaml
+  '/b2c/sms/verify':
+    $ref: paths/b2bc/b2c/verifySMS.yaml

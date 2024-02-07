@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - BCommon
   operationId: signMessage
@@ -12,21 +12,21 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             message:
               type: string
               example: "hello"
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               signedMessage:
                 type: string
-                example: | 
+                example: |
                   bBDAZm/kczqWdGsDqzNsBOvl8QjUJYPY69FDXOcDzD4VyJuHslBNx65EIyIn88jo5W2Uhv/eNfoP8eXaZl56N4Chiu9l5SuWG2R8aBhxUZpSLEwuLprc4tc2ifeUzX0FcDfhIxgRrQKdi2JBXhT5d0yO7tqJPVZCbyn17FBofwtnrfg6cVD8j2PeKG0xloifiY7HeOSAZrNw9kFunFs2c1qbXXWY9+USklmimuRsH6G63lYSNS1UYMkUzXClvl0r09usnIkXqZgkV8i6LbnKLogG9tTlaM5YflB3rQghJ5/ogDW89Mv0eKHUfb6a39ORSCsUweolOvMqtOOgql1j2Q==
-    '403':
+    "403":
       description: Forbidden

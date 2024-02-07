@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-get: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+get:
   tags:
     - Transaction
   operationId: getLastUpdatedTransaction
@@ -8,17 +8,17 @@ get:
   description: Returns the latest transaction detail which was approved.
   security: []
   responses:
-    '200':
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
             properties:
-              txnLog: 
+              txnLog:
                 type: object
                 properties:
-                  id: 
+                  id:
                     type: string
                     example: "8cb5f29d-40b8-428b-92dc-d6ecb814ab59"
                   cRIB:
@@ -54,16 +54,16 @@ get:
                   msg:
                     type: string
                     example: This is test message.
-                  createdAt: 
+                  createdAt:
                     type: string
                     format: date-time
-                    example: '2023-09-07T18:13:41.386Z'
-                  updatedAt: 
+                    example: "2023-09-07T18:13:41.386Z"
+                  updatedAt:
                     type: string
                     format: date-time
-                    example: '2023-09-07T18:14:16.824Z'
+                    example: "2023-09-07T18:14:16.824Z"
                   updateChecker:
                     type: string
                     example: checker@gmail.com
-    '403':
+    "403":
       description: Forbidden

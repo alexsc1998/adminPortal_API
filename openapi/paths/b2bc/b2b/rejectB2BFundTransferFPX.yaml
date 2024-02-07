@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - B2B
   operationId: rejectB2BFuncTransferFPX
@@ -11,9 +11,9 @@ post:
   requestBody:
     content:
       application/xml:
-        schema: 
+        schema:
           type: string
-        example: | 
+        example: |
           <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fpx="http://fpx.imocha/">
             <soapenv:Header/>
             <soapenv:Body>
@@ -24,10 +24,10 @@ post:
               </fpx:rejectB2bFundTransferFpx>
             </soapenv:Body>
           </soapenv:Envelope>
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
-      content: 
+      content:
         application/xml:
           example: |
             <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns2="http://fpx.imocha/">
@@ -43,5 +43,5 @@ post:
                 </ns2:rejectB2bFundTransferFpxResponse>
               </soap:Body>
             </soap:Envelope>
-    '403':
+    "403":
       description: Forbidden

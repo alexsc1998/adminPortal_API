@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-post: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+post:
   tags:
     - User
   operationId: checkCurrentPassword
@@ -12,25 +12,25 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             id:
               type: string
               example: john@gmail.com
             password:
               type: string
               example: "123456"
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: success
-    '400':
+    "400":
       description: Invalid Id
-    '403':
+    "403":
       description: Forbidden

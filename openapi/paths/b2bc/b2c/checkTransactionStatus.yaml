@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - B2C
   operationId: checkTransactionStatusB2C
@@ -8,21 +8,19 @@ post:
   description: |
     If the MFA method is 'MA', after calling authorizetransaction the frontend creates a socket connection with the backend and waits for a message to check if the status is success or not. I mentioned validity in the notifyLogin section and that validity is used for a countdown in the frontend. When the countdown hits 0 and there's no message from the socket, it will call checkTranasctinStatus manually to check the status. It accepts transactionNo and referenceNo and returns approvalStatus with values ranging from this "O" | "C" | "F" | "A" | "R" | "P" . if there's an error, error description and error id are also returned.
   security: []
-  parameters: 
+  parameters:
     - name: x-session-id
       in: header
       required: true
-      schema: 
+      schema:
         type: string
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             accessToken:
-              type: string
-            channel:
               type: string
             page:
               type: string
@@ -30,16 +28,14 @@ post:
               type: string
             refNo:
               type: string
-            dbtrAgt:
-              type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               data:
                 type: object
                 properties:
@@ -56,17 +52,17 @@ post:
                         type: string
                       accessToken:
                         type: string
-                  body: 
+                  body:
                     type: object
                     properties:
                       approvalStatus:
                         type: string
-                        enum: ['A', 'R', 'C', 'F', 'P', 'O']
+                        enum: ["A", "R", "C", "F", "P", "O"]
                       errorId:
                         type: string
                       errorDesc:
                         type: string
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Internal Server Error

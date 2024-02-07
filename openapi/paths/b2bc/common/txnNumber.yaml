@@ -1,29 +1,29 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-get: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+get:
   tags:
     - BCommon
   operationId: getTxnNumber
   summary: Get transaction Number
   description: Retrieve the number of latest transaction.
   security: []
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
-              txn_num: 
+            properties:
+              txn_num:
                 type: string
                 example: "00000170"
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Failed to retrieve txn number
 # post:
-#   tags: 
+#   tags:
 #     -  BCommon
 #   operationId: createTxnNumber
 #   summary: Create transaction number
@@ -34,18 +34,18 @@ get:
 #       application/json:
 #         schema:
 #           type: object
-#           properties: 
+#           properties:
 #             txnID:
 #               type: string
 #               example: "8861452"
-#   responses: 
+#   responses:
 #     '201':
 #       description: Success
 #       content:
 #         application/json:
 #           schema:
 #             type: object
-#             properties: 
+#             properties:
 #               message:
 #                 type: string
 #                 example: 'success'

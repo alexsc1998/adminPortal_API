@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - B2B
   operationId: loginB2B
@@ -8,18 +8,18 @@ post:
   description: |
     Receive credential, request and returns following data.
   security: []
-  parameters: 
+  parameters:
     - name: x-session-id
       in: header
       required: true
-      schema: 
+      schema:
         type: string
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             corporateLogonID:
               type: string
             userID:
@@ -28,23 +28,23 @@ post:
               type: string
             credential:
               type: string
-            dbtrAgt:
+            endToEndId:
               type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               data:
                 type: object
                 properties:
                   header:
                     type: object
                     format: ResponseHeader
-                  body: 
+                  body:
                     type: object
                     properties:
                       cif:
@@ -55,8 +55,8 @@ post:
                         type: integer
                       fromAccountList:
                         type: array
-                        format: 'Array<FromAccount>'
-    '403':
+                        format: "Array<FromAccount>"
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Internal Server Error

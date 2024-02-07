@@ -1,21 +1,21 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-get: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+get:
   tags:
     - BCommon
   operationId: getSetting
   summary: Get setting
   description: Get setting of the page with page number(page).
   security: []
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
-              data: 
+            properties:
+              data:
                 type: object
                 properties:
                   rib_limit:
@@ -39,7 +39,7 @@ get:
                   session_expiry:
                     type: integer
                     example: 300
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Failed to retrieve txn number

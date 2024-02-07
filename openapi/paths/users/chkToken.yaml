@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-get: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+get:
   tags:
     - User
   operationId: checkToken
@@ -14,29 +14,29 @@ get:
       required: true
       schema:
         type: string
-        example: '*******************'
+        example: "*******************"
     - name: src
       in: query
       description: The src that doesn't need to be fetched
       required: false
-      schema: 
+      schema:
         type: string
-        enum: ['active', 'locked']
-        example: 'active'
-  responses: 
-    '200':
+        enum: ["active", "locked"]
+        example: "active"
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               user:
                 type: string
                 example: johndoe
-    '400':
+    "400":
       description: Token has expired
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Token not found

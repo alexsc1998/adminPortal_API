@@ -1,8 +1,8 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 get:
-  tags: 
-    -  Group
+  tags:
+    - Group
   security: []
   operationId: getUserGroupById
   summary: Get UserGroup By Id
@@ -14,32 +14,32 @@ get:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
-              userGroup: 
+            properties:
+              userGroup:
                 type: object
-                properties: 
-                  name: 
+                properties:
+                  name:
                     type: string
                     example: New User Group 2
-                  role: 
+                  role:
                     type: integer
                     example: 6
                   id:
                     type: string
                     example: d1c24371-9f82-41ae-8c45-943a3b3cb4ab
-    '403':
+    "403":
       description: Forbidden
-  
-put: 
-  tags: 
-    -  Group
+
+put:
+  tags:
+    - Group
   security: []
   operationId: updateUserGroupById
   summary: Update UserGroup By Id
@@ -56,32 +56,32 @@ put:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             roleId:
               type: integer
               example: 6
-            name: 
+            name:
               type: string
               example: Normal User Group 3
   responses:
-    '200':
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: success
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Invalid Id
 
-delete: 
-  tags: 
-    -  Group
+delete:
+  tags:
+    - Group
   security: []
   operationId: deleteUserGroupById
   summary: Delete UserGroup By Id
@@ -93,19 +93,18 @@ delete:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: d1c24371-9f82-41ae-8c45-943a3b3cb4ab
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Invalid Id
-  

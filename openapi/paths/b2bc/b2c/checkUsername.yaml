@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5000/api' 
-post: 
+servers:
+  - url: "http://20.205.146.121:5002/api"
+post:
   tags:
     - B2C
   operationId: checkUserNameB2C
@@ -13,21 +13,19 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             username:
               type: string
-            channel:
+            endToEndId:
               type: string
-            dbtrAgt:
-              type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               data:
                 type: object
                 properties:
@@ -52,12 +50,12 @@ post:
                         type: string
                       errorDesc:
                         type: string
-                  body: 
+                  body:
                     type: object
                     properties:
                       securePhrase:
                         type: string
-    '403':
+    "403":
       description: Forbidden
-    '500':
+    "500":
       description: Internal Server Error

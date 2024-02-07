@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-get: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+get:
   tags:
     - Transaction
   operationId: getTransactionById
@@ -15,25 +15,25 @@ get:
       schema:
         type: string
   responses:
-    '200':
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
             properties:
-              txnLogs: 
+              txnLogs:
                 type: array
                 items:
                   type: object
                   properties:
-                    id: 
+                    id:
                       type: string
                       example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
-                    createdAt: 
+                    createdAt:
                       type: string
                       format: date-time
-                      example: '2023-09-07T18:13:41.386Z'
+                      example: "2023-09-07T18:13:41.386Z"
                     cRIB:
                       type: integer
                       example: 60000
@@ -64,12 +64,12 @@ get:
                     tid:
                       type: integer
                       example: 1
-    '400':
+    "400":
       description: Invalid id
-    '403':
+    "403":
       description: Forbidden
-    
-put: 
+
+put:
   tags:
     - Transaction
   operationId: updateTransactionById
@@ -88,7 +88,7 @@ put:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             id:
               type: string
               example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
@@ -103,13 +103,13 @@ put:
               type: integer
               example: 1
   responses:
-    '201':
+    "201":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               cRIB:
                 type: integer
                 example: 60000
@@ -140,19 +140,19 @@ put:
               msg:
                 type: string
                 example: This is test message.
-              createdAt: 
+              createdAt:
                 type: string
                 format: date-time
-                example: '2023-09-07T18:13:41.386Z'
-              updatedAt: 
+                example: "2023-09-07T18:13:41.386Z"
+              updatedAt:
                 type: string
                 format: date-time
-                example: '2023-09-07T18:14:16.824Z'
+                example: "2023-09-07T18:14:16.824Z"
               updateChecker:
                 type: string
                 example: checker@gmail.com
               trxId:
                 type: string
                 example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
-    '403':
+    "403":
       description: Forbidden

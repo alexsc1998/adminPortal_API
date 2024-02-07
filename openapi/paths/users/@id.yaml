@@ -1,6 +1,6 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-get: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+get:
   tags:
     - User
   operationId: getUserById
@@ -14,28 +14,28 @@ get:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
-              user: 
+            properties:
+              user:
                 type: object
-                properties: 
-                  id: 
+                properties:
+                  id:
                     type: string
                     example: 8cb5f29d-19c5-428b-8d1b-d6ecb814dc86
-                  name: 
+                  name:
                     type: string
                     example: John Doe
-                  email: 
+                  email:
                     type: string
                     format: email
                     example: john@gmail.com
-                  userGroup: 
+                  userGroup:
                     type: string
                     example: 53c087f1-f2cb-4472-861e-26edd39c6d7b
                   staffId:
@@ -43,14 +43,14 @@ get:
                     example: john434
                   status:
                     type: string
-                    enum: ['active', 'locked']
+                    enum: ["active", "locked"]
                     example: active
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: User not found
 
-put: 
+put:
   tags:
     - User
   operationId: updateUserById
@@ -69,30 +69,30 @@ put:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             name:
               type: string
               example: "John Doe"
-            userGroup: 
+            userGroup:
               type: string
               example: "d1c24371-9f82-41ae-8c45-943a3b3cb4ab"
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: success
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: User not found
 
-delete: 
+delete:
   tags:
     - User
   operationId: deleteUserById
@@ -106,18 +106,18 @@ delete:
       required: true
       schema:
         type: string
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: 8cb5f29d-19c5-428b-8d1b-d6ecb814dc86
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: User not found

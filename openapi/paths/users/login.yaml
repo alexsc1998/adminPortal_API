@@ -1,7 +1,7 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
-post: 
-  tags: 
+servers:
+  - url: "http://20.205.146.121:5001/api"
+post:
+  tags:
     - User
   operationId: loginUser
   summary: Login
@@ -12,47 +12,47 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             email:
               type: string
               format: email
               example: john@gmail.com
-            password: 
+            password:
               type: string
               example: "123456"
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
-              id: 
+            properties:
+              id:
                 type: string
                 example: 8cb5f29d-19c5-428b-8d1b-d6ecb814dc86
               email:
                 type: string
                 format: email
                 example: john@gmail.com
-              status: 
+              status:
                 type: string
                 example: "123456"
-              staffId: 
+              staffId:
                 type: string
                 example: johndoe
-              role: 
+              role:
                 type: string
                 example: normal user 1
-              userGroup: 
+              userGroup:
                 type: string
                 example: Normal User Group 1
-              token: 
+              token:
                 type: string
-                example: '**************'
-    '401':
+                example: "**************"
+    "401":
       description: Invalid credentials
-    '403':
+    "403":
       description: Forbidden
-    '404':
+    "404":
       description: Invalid credentials

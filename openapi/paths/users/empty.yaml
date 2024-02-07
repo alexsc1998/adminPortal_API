@@ -1,5 +1,5 @@
-servers: 
-  - url: 'http://54.169.180.154:5001/api'
+servers:
+  - url: "http://20.205.146.121:5001/api"
 get:
   tags:
     - User
@@ -7,8 +7,8 @@ get:
   summary: Get all users
   description: Get the list of all registered users.
   security: []
-  responses: 
-    '200':
+  responses:
+    "200":
       description: Success
       content:
         application/json:
@@ -16,38 +16,38 @@ get:
             type: array
             title: User
             description: Hello
-            items: 
+            items:
               type: object
               properties:
-                id: 
+                id:
                   type: string
                   example: 8cb5f29d-40b8-428b-92dc-d6ecb814ab59
-                name: 
-                  type: string 
+                name:
+                  type: string
                   example: John Doe
-                email: 
+                email:
                   type: string
                   example: john.smith@example.com
-                role: 
-                  type: string 
+                role:
+                  type: string
                   example: manager 1
-                userGroup: 
+                userGroup:
                   type: string
                   example: New Manager Group 1
-                staffId: 
-                  type: string 
+                staffId:
+                  type: string
                   example: john120
-                status: 
-                  type: string 
-                  enum: ['active', 'locked']
+                status:
+                  type: string
+                  enum: ["active", "locked"]
                   example: active
-                idx: 
+                idx:
                   type: integer
                   example: 1
-    '403':
+    "403":
       description: Forbidden
-post: 
-  tags: 
+post:
+  tags:
     - User
   operationId: createUser
   summary: Create user
@@ -58,11 +58,11 @@ post:
       application/json:
         schema:
           type: object
-          properties: 
+          properties:
             name:
               type: string
               example: John Doe
-            email: 
+            email:
               type: string
               format: email
               example: john@gmail.com
@@ -72,18 +72,18 @@ post:
             staffId:
               type: string
               example: john830
-  responses: 
-    '201':
+  responses:
+    "201":
       description: Success
       content:
         application/json:
           schema:
             type: object
-            properties: 
+            properties:
               message:
                 type: string
                 example: success
-    '400':
+    "400":
       description: Invalid Id
-    '403':
+    "403":
       description: Forbidden
