@@ -30,6 +30,8 @@ post:
               type: string
             dbtrAgt:
               type: string
+            endToEndId:
+              type: string
   responses: 
     '200':
       description: Success
