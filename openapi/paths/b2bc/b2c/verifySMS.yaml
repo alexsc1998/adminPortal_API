@@ -16,7 +16,7 @@ post:
           properties:
             txnID:
               type: string
-            telNo:
+            otp:
               type: string
   responses:
     "200":

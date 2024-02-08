@@ -55,6 +55,10 @@ post:
                   timestamp:
                     type: string
                     format: date-time
+                  ErrorId:
+                    type: string
+                  ErrorDesc:
+                    type: string
     "403":
       description: Forbidden
     "500":

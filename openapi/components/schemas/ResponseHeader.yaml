@@ -1,0 +1,29 @@
+ResHeader:
+  type: object
+  properties:
+    trxType:
+      type: string
+    timestamp:
+      type: string
+    tracingNo:
+      type: string
+    channel:
+      type: string
+    accessToken:
+      type: string
+    signature:
+      type: string
+    status:
+      type: number
+    errorId:
+      type: string
+    errorDesc:
+      type: string
+  required:
+    - trxType
+    - timestamp
+    - tracingNo
+    - channel
+    - accessToken
+    - signature
+    - status

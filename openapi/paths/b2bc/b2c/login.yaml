@@ -61,20 +61,10 @@ post:
                     properties:
                       cif:
                         type: string
-                      mbl:
-                        type: object
-                        properties:
-                          trxLimit:
-                            type: integer
-                          usedLimit:
-                            type: integer
-                      msl:
-                        type: object
-                        properties:
-                          trxLimit:
-                            type: number
-                          usedLimit:
-                            type: number
+                      trxLimit:
+                        type: number
+                      usedLimit:
+                        type: number
     "403":
       description: Forbidden
     "500":

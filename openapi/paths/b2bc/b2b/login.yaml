@@ -43,19 +43,56 @@ post:
                 properties:
                   header:
                     type: object
-                    format: ResponseHeader
+                    properties:
+                      trxType:
+                        type: string
+                      timestamp:
+                        type: string
+                      tracingNo:
+                        type: string
+                      channel:
+                        type: string
+                      accessToken:
+                        type: string
+                      signature:
+                        type: string
+                      status:
+                        type: integer
+                      errorId:
+                        type: string
+                      errorDesc:
+                        type: string
                   body:
                     type: object
                     properties:
-                      cif:
-                        type: string
-                      trxLimit:
-                        type: integer
-                      usedLimit:
-                        type: integer
-                      fromAccountList:
+                      companyList:
                         type: array
-                        format: "Array<FromAccount>"
+                        items: 
+                          type: object
+                          properties: 
+                            cif:
+                              type: string
+                            trxLimit:
+                              type: integer
+                            usedLimit:
+                              type: integer
+                            linkedCompany:
+                              type: string
+                            fromAccountList:
+                              type: array
+                              items: 
+                                type: object
+                                properties: 
+                                  fromAccNo: 
+                                    type: string
+                                  fromAccName:
+                                    type: string
+                                  fromAccHolder:
+                                    type: string
+                                  fromAccType:
+                                    type: string
+                                  fromAccAmount:
+                                    type: number
     "403":
       description: Forbidden
     "500":

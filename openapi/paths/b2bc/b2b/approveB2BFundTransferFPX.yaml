@@ -11,19 +11,20 @@ post:
   requestBody:
     content:
       application/xml:
-        schema:
+        schema: 
           type: string
-        example: |
-          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fpx="http://fpx.imocha/">
-            <soapenv:Header/>
-            <soapenv:Body>
-              <fpx:approveB2bFundTransferFpx>
-                <username>manreny</username>
-                <companyId>1rer</companyId>
-                <uuid>20230915BKRM0602862OCB00000106</uuid>
-              </fpx:approveB2bFundTransferFpx>
-            </soapenv:Body>
-          </soapenv:Envelope>
+          description: XML data
+          example: |
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fpx="http://fpx.imocha/">
+              <soapenv:Header/>
+              <soapenv:Body>
+                <fpx:approveB2bFundTransferFpx>
+                  <username>manreny</username>
+                  <companyId>1rer</companyId>
+                  <uuid>20230915BKRM0602862OCB00000106</uuid>
+                </fpx:approveB2bFundTransferFpx>
+              </soapenv:Body>
+            </soapenv:Envelope>
   responses:
     "200":
       description: Success
@@ -31,7 +32,7 @@ post:
         application/xml:
           example: |
             <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"  xmlns:ns2="http://fpx.imocha/">
-              <soap:Body>
+              <soap:Body
                   <ns2:approveB2bFundTransferFpxResponse xmlns:ns2="http://fpx.imocha/">
                       <response>
                           <responseCode>9999</responseCode>

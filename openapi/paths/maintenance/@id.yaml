@@ -158,7 +158,7 @@ delete:
         type: string
   responses:
     "200":
-      $ref: ../../components/response/msgSuccess.yaml
+      $ref: ../../components/response/success.yaml
     "403":
       description: Forbidden
     "404":

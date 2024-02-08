@@ -7,7 +7,8 @@ post:
   description: |
     Retrieve type and returns the pending count with the type.
   operationId: getPendingCountByType
-  security: []
+  security:
+    - basicAuth: []
   responses:
     "200":
       description: Success

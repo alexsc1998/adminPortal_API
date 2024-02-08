@@ -118,10 +118,10 @@ paths:
     $ref: paths/b2bc/common/privateKey.yaml
   '/setting':
     $ref: paths/b2bc/common/setting.yaml
-  '/api-log':
-    $ref: paths/b2bc/common/apiLog.yaml
-  '/error-log':
-    $ref: paths/b2bc/common/errorLog.yaml
+  # '/api-log':
+  #   $ref: paths/b2bc/common/apiLog.yaml
+  # '/error-log':
+  #   $ref: paths/b2bc/common/errorLog.yaml
   '/transaction-number':
     $ref: paths/b2bc/common/txnNumber.yaml
   '/login-session':
@@ -182,3 +182,10 @@ paths:
     $ref: paths/b2bc/b2c/sendSMS.yaml
   '/b2c/sms/verify':
     $ref: paths/b2bc/b2c/verifySMS.yaml
+
+components: 
+  securitySchemes: 
+    basicAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

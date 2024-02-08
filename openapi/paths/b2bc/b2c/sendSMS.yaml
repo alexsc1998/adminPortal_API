@@ -14,9 +14,9 @@ post:
         schema:
           type: object
           properties:
-            otp:
-              type: string
             txnID:
+              type: string
+            telNo:
               type: string
   responses:
     "200":

@@ -27,67 +27,6 @@ get:
       required: true
       schema:
         type: string
-    - name: channel
-      in: query
-      description: The channel that needs to be fetched
-      required: true
-      schema:
-        type: string
-  requestBody:
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            data:
-              type: object
-              properties:
-                msgId:
-                  type: string
-                currentDT:
-                  type: string
-                tnxId:
-                  type: string
-                amount:
-                  type: number
-                payerName:
-                  type: string
-                creditorName:
-                  type: string
-                currency:
-                  type: string
-                redirectURL:
-                  type: string
-                recipientReference:
-                  type: string
-                productId:
-                  type: string
-                merchantID:
-                  type: string
-                dbtrAgt:
-                  type: string
-                endToEndId:
-                  type: string
-                sourceOfFunds:
-                  type: string
-                xpryDt:
-                  type: string
-                frBIC:
-                  type: string
-                toBIC:
-                  type: string
-                dbtrAgtBIC:
-                  type: string
-                cdtrAcctId:
-                  type: string
-                cdtrAcctTp:
-                  type: string
-                cdtrAgtBIC:
-                  type: string
-                bizSvc:
-                  type: string
-                status:
-                  type: string
   responses:
     "200":
       description: Success
@@ -96,8 +35,56 @@ get:
           schema:
             type: object
             properties:
-              status:
-                type: string
+              data:
+                type: object
+                properties:
+                  msgId:
+                    type: string
+                  currentDT:
+                    type: string
+                  tnxId:
+                    type: string
+                  amount:
+                    type: number
+                  payerName:
+                    type: string
+                  creditorName:
+                    type: string
+                  currency:
+                    type: string
+                  redirectURL:
+                    type: string
+                  recipientReference:
+                    type: string
+                  productId:
+                    type: string
+                  merchantID:
+                    type: string
+                  dbtrAgt:
+                    type: string
+                  endToEndId:
+                    type: string
+                  sourceOfFunds:
+                    type: string
+                  xpryDt:
+                    type: string
+                  frBIC:
+                    type: string
+                  toBIC:
+                    type: string
+                  dbtrAgtBIC:
+                    type: string
+                  cdtrAcctId:
+                    type: string
+                  cdtrAcctTp:
+                    type: string
+                  cdtrAgtBIC:
+                    type: string
+                  bizSvc:
+                    type: string
+                  status:
+                    type: string
+
     "403":
       description: Forbidden
     "500":

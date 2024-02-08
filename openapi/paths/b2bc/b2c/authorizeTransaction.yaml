@@ -42,11 +42,7 @@ post:
               type: integer
             totalAmount:
               type: integer
-            channel:
-              type: string
             method:
-              type: string
-            dbtrAgt:
               type: string
   responses:
     "200":

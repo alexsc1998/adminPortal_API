@@ -13,17 +13,18 @@ post:
       application/xml:
         schema:
           type: string
-        example: |
-          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fpx="http://fpx.imocha/">
-            <soapenv:Header/>
-            <soapenv:Body>
-              <fpx:rejectB2bFundTransferFpx>
-                <username>manreny</username>
-                <companyId>1rer</companyId>
-                <uuid>20230915BKRM0602862OCB00000106</uuid>
-              </fpx:rejectB2bFundTransferFpx>
-            </soapenv:Body>
-          </soapenv:Envelope>
+          description: XML data
+          example: |
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fpx="http://fpx.imocha/">
+              <soapenv:Header/>
+              <soapenv:Body>
+                <fpx:rejectB2bFundTransferFpx>
+                  <username>manreny</username>
+                  <companyId>1rer</companyId>
+                  <uuid>20230915BKRM0602862OCB00000106</uuid>
+                </fpx:rejectB2bFundTransferFpx>
+              </soapenv:Body>
+            </soapenv:Envelope>
   responses:
     "200":
       description: Success
